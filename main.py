@@ -115,5 +115,5 @@ msg = sch.getMealMessage(weekday, hour)
 
 data =  json.load(open("keys.json"))
 
-sendGroupMe(msg, data['accessToken'],data['accessToken'])
+sendGroupMe(msg, data['accessToken'],data['groupId'])
 print(msg)
