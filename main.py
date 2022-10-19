@@ -1,6 +1,7 @@
 import requests
 import io
-import json
+import json, string, random
+import pathlib
 from datetime import date, datetime
 
 from enum import Enum
@@ -86,13 +87,13 @@ class Meal:
       except StopIteration:
           break
 
-def sendGroupMe(msg , accessToken, groupId):
-  accessToken = 'yKcm3ndUdGA53d5Uwhs8viAH4zUpg4AptSjFEjzX'
-  groupID = '89899864'
+def id_generator(size=10, chars=string.ascii_uppercase + string.digits):
+  return ''.join(random.choice(chars) for _ in range(size))
 
+def sendGroupMe(msg , accessToken, groupId):
   msgPacket =    {
         "message": {
-          "source_guid": "GUID",
+          "source_guid": id_generator(),
           "text": msg,
         }
       }
@@ -110,10 +111,11 @@ text = extract_text( io.BytesIO(pdfFile)).strip()
 
 sch = Meal()
 sch.read(text)
+print(text)
 sch.printMeals()
 msg = sch.getMealMessage(weekday, hour)
 
-data =  json.load(open("keys.json"))
+data =  json.load(open(pathlib.Path("keys.json").resolve()))
 
 sendGroupMe(msg, data['accessToken'],data['groupId'])
 print(msg)
