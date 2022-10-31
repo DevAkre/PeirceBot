@@ -100,7 +100,7 @@ def sendGroupMe(msg , accessToken, groupId):
 
 
   q_params = {'token': accessToken}
-  response = requests.post('https://api.groupme.com/v3/groups/'+groupID+'/messages', json = msgPacket, params = q_params)
+  response = requests.post('https://api.groupme.com/v3/groups/'+groupId+'/messages', json = msgPacket, params = q_params)
 
 week = (datetime.now().strftime("%U"))
 weekday = datetime.now().strftime("%A")
