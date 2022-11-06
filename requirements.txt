@@ -1,6 +1,5 @@
 anytree==2.8.0
 appdirs==1.4.4
-arandr==0.1.10
 attrs==22.1.0
 autocommand==2.2.1
 btrfsutil==6.0
